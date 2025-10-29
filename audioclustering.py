@@ -12,19 +12,19 @@ from scipy.spatial.distance import pdist, squareform
 audio_samples = "audio"
 audio_files = os.listdir(audio_samples) # get the audios from the folder
 
-spectograms = []
+spectrograms = []
 names = []
 
 for file in audio_files:
     path = os.path.join(audio_samples, file)
     y, sr = librosa.load(path, sr=None) # load audio as a waveform y store the sampling rate as sr
-    # compute mel spectogram
+    # compute mel spectrogram
     S = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=64, fmax=8000)
     S_db = librosa.power_to_db(S, ref=np.max) # convert to decibal scale
-    spectograms.append(S_db)
+    spectrograms.append(S_db)
     names.append(file)
 
-print(f"Loaded {len(spectograms)} spectograms.")
+print(f"Loaded {len(spectrograms)} spectograms.")
 
 # compute pairwise distances using matrix norm
 
@@ -40,15 +40,29 @@ def matrix_distance(A,B, norm_type="fro"):
     return np.linalg.norm(diff, ord=norm_type)
 
 # Build distance matrix
-n = len(spectograms)
+n = len(spectrograms)
 D = np.zeros((n,n))
 for i in range(n):
     for j in range(n):
         if i < j:
-            D[i,j] = matrix_distance(spectograms[i], spectograms[j])
+            D[i,j] = matrix_distance(spectrograms[i], spectrograms[j])
             D[j,i] = D[i,j]
 
 # Normalize distances for dbscan
 D = D / np.max(D)
 
 # cluster using dbscan
+db = DBSCAN(eps = 0.5, min_samples = 2, metric = "precomputed")
+labels = db.fit_predict(D)
+
+# print results
+print("===Clustering Results===")
+for name, label in zip(names, labels):
+    print(f"{name} : Cluster {label}")
+
+# some visualization
+import seaborn as sns
+plt.figure(figsize=(10,10))
+sns.heatmap(D, xticklabels = names, yticklabels = names,  cmap="viridis")
+plt.title("Pairwise distance matrix with Frobenius norm")
+plt.show()

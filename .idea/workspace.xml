@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5bbe2edd-5d4e-49ca-bdeb-e8633b43a6f9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audioclustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/audioclustering.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +77,7 @@
       <updated>1761162880765</updated>
       <workItem from="1761162881811" duration="271000" />
       <workItem from="1761685581513" duration="594000" />
-      <workItem from="1761735828223" duration="4409000" />
+      <workItem from="1761735828223" duration="7508000" />
     </task>
     <servers />
   </component>
@@ -85,6 +86,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Numerical$test1.coverage" NAME="test1 Coverage Results" MODIFIED="1761735973808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Numerical$audioclustering.coverage" NAME="audioclustering Coverage Results" MODIFIED="1761739932622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Numerical$audioclustering.coverage" NAME="audioclustering Coverage Results" MODIFIED="1761742849384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
