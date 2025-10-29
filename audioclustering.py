@@ -49,10 +49,10 @@ for i in range(n):
             D[j,i] = D[i,j]
 
 # Normalize distances for dbscan
-D = D / np.max(D)
+# D = D / np.max(D)
 
 # cluster using dbscan
-db = DBSCAN(eps = 0.5, min_samples = 2, metric = "precomputed")
+db = DBSCAN(eps = 1000, min_samples = 2, metric = "precomputed")
 labels = db.fit_predict(D)
 
 # print results
@@ -60,9 +60,22 @@ print("===Clustering Results===")
 for name, label in zip(names, labels):
     print(f"{name} : Cluster {label}")
 
+plt.hist(D.flatten(), bins=30)
+plt.title("Distribution of pairwise distances")
+plt.show()
+
 # some visualization
 import seaborn as sns
 plt.figure(figsize=(10,10))
 sns.heatmap(D, xticklabels = names, yticklabels = names,  cmap="viridis")
 plt.title("Pairwise distance matrix with Frobenius norm")
 plt.show()
+
+
+for i, (S_db, name) in enumerate(zip(spectrograms, names)):
+    plt.figure(figsize=(8, 4))
+    librosa.display.specshow(S_db, sr=sr, x_axis='time', y_axis='mel', cmap='magma')
+    plt.colorbar(format="%+2.0f dB")
+    plt.title(f"Mel Spectrogram - {name}")
+    plt.tight_layout()
+    plt.show()
