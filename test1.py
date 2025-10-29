@@ -7,7 +7,7 @@ def f(x):
 
 def f_prime_exact(x):
     return np.exp(-x) * (3*x**2 - x**3)
-
+3
 # Parameters
 h = 0.05
 x = np.arange(0, 5 + h, h)  # from 0 to 5
